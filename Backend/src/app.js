@@ -12,7 +12,7 @@ app.use(cors({
 }))
 
 // Dummy / Health Check API
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).json({
         success: true,
         message: 'Interview AI Backend is running 🚀'
