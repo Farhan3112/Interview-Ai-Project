@@ -1,88 +1,92 @@
 # 🤖 AI Interview & Resume Analyzer
 
-A full-stack AI-powered web application that helps users analyze
-resumes, identify skill gaps, generate interview reports, and create
-ATS-optimized resumes.
+> A full-stack AI-powered career platform built with React.js, Node.js, Express.js, MongoDB, Google Gemini API, and Puppeteer.
 
-The project is built with **React.js, Node.js, Express.js, MongoDB,
-Google Gemini API, JWT authentication, and Puppeteer**.
+This project is designed to simulate a real-world AI-powered career platform where users can upload their resumes, analyze job descriptions, identify skill gaps, generate personalized AI-powered interview questions, and create ATS-optimized resumes.
 
-------------------------------------------------------------------------
+It combines **Full Stack Development with Generative AI** to demonstrate how modern AI features can be integrated into a production-style web application.
+
+---
 
 ## ✨ Features
 
 ### 🔐 Secure Authentication
+- User registration and login
+- JWT-based authentication
+- Protected frontend and backend routes
+- Authentication middleware
+- JWT token blacklisting
+- Secure logout flow
+- Current authenticated user (`getMe`) functionality
 
--   User registration and login
--   JWT-based authentication
--   Protected routes
--   Authentication middleware
--   JWT token blacklisting
--   Secure logout flow
--   Current-user (`getMe`) functionality
+### 📄 Resume Analysis
+- Resume file upload
+- AI-powered resume parsing
+- Automatic skill extraction
+- Structured AI-generated analysis
+- Resume information used for personalized career analysis
 
-### 📄 Resume Parsing & Skill Extraction
+### 💼 Job Description Analysis
+- Analyze job descriptions against a user's resume
+- Identify relevant skills and requirements
+- Compare existing skills with job requirements
+- Detect missing or weak skills
 
--   Resume file upload
--   AI-powered resume parsing
--   Automatic skill extraction
--   Structured AI-generated analysis
+### 🧠 AI-Powered Skill Gap Detection
+- Identify skills missing from the user's profile
+- Highlight areas that need improvement
+- Generate actionable insights based on resume/job requirements
 
-### 🤖 AI-Powered Interview Analysis
-
--   Generate interview reports using Gemini AI
--   Analyze a candidate's resume and skills
--   Detect missing or weak skills
--   Identify skill gaps
--   Store generated reports in MongoDB
--   View individual and recent reports
+### 🤖 AI-Powered Interview Preparation
+- Generate personalized interview questions
+- Use resume and skill information to make questions relevant
+- Generate AI-powered interview analysis and reports
+- Store generated reports for later access
 
 ### 🎯 ATS-Optimized Resume Generation
+- Generate resume content using Gemini AI
+- Optimize resume content for ATS systems
+- Convert generated resume data into an HTML resume
+- Generate a professional PDF using Puppeteer
 
--   Generate resume content with AI
--   Optimize resume content for ATS systems
--   Convert generated resume data into an HTML template
--   Generate a professional PDF using Puppeteer
+### 🖥️ Modern Frontend Architecture
+- React.js with Vite
+- React Router
+- Context API for state management
+- Custom React hooks
+- Axios-based API services
+- Feature-based folder structure
+- Protected routes
+- SCSS styling
 
-### 🖥️ Frontend
-
--   React.js with Vite
--   React Router
--   Context API for state management
--   Custom React hooks
--   Axios API services
--   Protected frontend routes
--   SCSS-based styling
-
-------------------------------------------------------------------------
+---
 
 ## 🛠️ Tech Stack
 
-  Category           Technologies
-  ------------------ ------------------------
-  Frontend           React.js, Vite
-  Routing            React Router
-  State Management   React Context API
-  HTTP Client        Axios
-  Styling            SCSS
-  Backend            Node.js, Express.js
-  Database           MongoDB, MongoDB Atlas
-  ODM                Mongoose
-  Authentication     JWT
-  File Upload        Multer
-  Validation         Zod
-  AI                 Google Gemini API
-  PDF Generation     Puppeteer
-  API Testing        Postman
+| Category | Technologies |
+|---|---|
+| Frontend | React.js, Vite |
+| Routing | React Router |
+| State Management | React Context API |
+| HTTP Client | Axios |
+| Styling | SCSS |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, MongoDB Atlas |
+| ODM | Mongoose |
+| Authentication | JWT |
+| File Upload | Multer |
+| Validation | Zod |
+| AI | Google Gemini API |
+| PDF Generation | Puppeteer |
+| API Testing | Postman |
 
-------------------------------------------------------------------------
+---
 
 ## 🏗️ Project Architecture
 
-The application follows a modular full-stack architecture where the
-frontend communicates with the Express backend through REST APIs.
+The application follows a modular full-stack architecture where the React frontend communicates with the Express backend through REST APIs.
 
-``` text
+```text
                          ┌─────────────────────┐
                          │      React.js       │
                          │      Frontend       │
@@ -121,11 +125,11 @@ frontend communicates with the Express backend through REST APIs.
                        └───────────────┘
 ```
 
-------------------------------------------------------------------------
+---
 
-## 📁 Folder Structure
+## 📁 Project Structure
 
-``` text
+```text
 Gen AI Full Stack Web Development Project/
 │
 ├── Backend/
@@ -207,56 +211,44 @@ Gen AI Full Stack Web Development Project/
 └── README.md
 ```
 
-------------------------------------------------------------------------
+---
 
 ## 🔄 How the Application Works
 
 ### 1. Authentication Flow
 
-``` text
-User
- │
- ├── Register
- │      │
- │      ▼
- │   Auth Controller
- │      │
- │      ▼
- │   Create User
- │      │
- │      ▼
- │   Generate JWT
- │
- └── Login
-        │
-        ▼
-   Verify Credentials
-        │
-        ▼
-    Generate JWT
-        │
-        ▼
-   Authentication Cookie
-        │
-        ▼
-   Protected Request
-        │
-        ▼
-   Auth Middleware
-        │
-        ├── Verify JWT
-        │
-        └── Check Blacklist
-                │
-                ▼
-          Authorized User
+```text
+Register / Login
+       │
+       ▼
+Express Auth Route
+       │
+       ▼
+Auth Controller
+       │
+       ├── Validate credentials
+       ├── Create / verify user
+       └── Generate JWT
+       │
+       ▼
+Authentication Cookie
+       │
+       ▼
+Protected API Request
+       │
+       ▼
+Auth Middleware
+       │
+       ├── Verify JWT
+       └── Check Token Blacklist
+       │
+       ▼
+Authorized Request
 ```
 
 ### 2. Logout & Token Blacklisting
 
-When a user logs out, the authentication token is added to a blacklist.
-
-``` text
+```text
 Logout Request
       │
       ▼
@@ -280,86 +272,93 @@ Blacklist Check
       └── Token rejected
 ```
 
-This prevents a previously issued token from continuing to authenticate
-a user after logout.
+Token blacklisting ensures that a previously issued JWT cannot continue to authenticate the user after logout.
 
-------------------------------------------------------------------------
+### 3. Resume & Job Analysis Flow
 
-### 3. AI Interview Analysis Flow
-
-``` text
-                User
-                  │
-                  ▼
-           Upload Resume
-                  │
-                  ▼
-           React Frontend
-                  │
-                  ▼
-          Interview API
-                  │
-                  ▼
-          Express Controller
-                  │
-                  ▼
-             AI Service
-                  │
-                  ▼
-            Gemini API
-                  │
-                  ▼
-       Structured AI Response
-             /    |     \
-            /     |      \
-           ▼      ▼       ▼
-       Resume   Skills   Skill Gaps
-       Data     Found    Detected
-            \     |      /
-             \    |     /
-                  ▼
-          Interview Report
-                  │
-                  ▼
-              MongoDB
-                  │
-                  ▼
-           Frontend Report
-```
-
-------------------------------------------------------------------------
-
-### 4. AI → PDF Resume Pipeline
-
-The application uses AI to generate resume content and Puppeteer to
-convert the result into a PDF.
-
-``` text
-Resume / User Information
+```text
+User
+ │
+ ├── Upload Resume
+ │
+ └── Provide Job Description
+          │
+          ▼
+     React Frontend
+          │
+          ▼
+      Interview API
+          │
+          ▼
+   Express Controller
+          │
+          ▼
+       AI Service
           │
           ▼
       Gemini API
           │
-          ▼
-AI-Generated Resume Data
-          │
-          ▼
- ATS-Optimized Content
-          │
-          ▼
-     HTML Template
-          │
-          ▼
-       Puppeteer
-          │
-          ▼
-      PDF Document
-          │
-          ▼
-        Download
+          ├── Resume Parsing
+          ├── Skill Extraction
+          ├── Job Analysis
+          └── Skill Gap Detection
+                    │
+                    ▼
+              AI Analysis
+                    │
+                    ▼
+                 MongoDB
+                    │
+                    ▼
+             Frontend Report
 ```
 
-------------------------------------------------------------------------
+### 4. AI Interview Question Generation
+
+```text
+Resume + Job Description
+          │
+          ▼
+      Gemini AI
+          │
+          ▼
+ Personalized Analysis
+          │
+          ▼
+Interview Questions
+          │
+          ▼
+     User Practice
+```
+
+### 5. AI → PDF Resume Pipeline
+
+```text
+User / Resume Data
+        │
+        ▼
+    Gemini API
+        │
+        ▼
+AI-Generated Resume
+        │
+        ▼
+ATS-Optimized Content
+        │
+        ▼
+    HTML Template
+        │
+        ▼
+     Puppeteer
+        │
+        ▼
+    PDF Document
+        │
+        ▼
+       User
+```
+
+---
 
 ## 🗄️ Database Models
 
@@ -367,7 +366,7 @@ AI-Generated Resume Data
 
 Stores user authentication and profile-related information.
 
-``` text
+```text
 User
  ├── Name
  ├── Email
@@ -378,7 +377,7 @@ User
 
 Stores AI-generated interview analysis and report information.
 
-``` text
+```text
 InterviewReport
  ├── User Reference
  ├── Resume / Interview Data
@@ -391,19 +390,19 @@ InterviewReport
 
 Stores invalidated JWT tokens after logout.
 
-``` text
+```text
 Blacklist
  ├── Token
  └── Expiration Information
 ```
 
-------------------------------------------------------------------------
+---
 
 ## 🔑 Environment Variables
 
 Create a `.env` file inside the `Backend` directory.
 
-``` env
+```env
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
@@ -411,49 +410,47 @@ GEMINI_API_KEY=your_gemini_api_key
 CLIENT_URL=http://localhost:5173
 ```
 
-> **Important:** Use the exact environment variable names required by
-> your implementation. Never commit your `.env` file or API keys to
-> GitHub.
+> **Important:** Use the exact environment variable names required by your implementation. Never commit `.env` files, database credentials, JWT secrets, or API keys to GitHub.
 
-------------------------------------------------------------------------
+---
 
-## ⚙️ Installation
+## ⚙️ Installation & Setup
 
 ### Prerequisites
 
-Make sure you have:
+Make sure you have installed:
 
--   Node.js installed
--   npm installed
--   MongoDB Atlas account
--   Gemini API key
--   Git installed
+- [Node.js](https://nodejs.org/)
+- npm
+- MongoDB Atlas account
+- Gemini API key
+- Git
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
-``` bash
+```bash
 git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
 cd YOUR_REPOSITORY
 ```
 
 ### 2. Install Backend Dependencies
 
-``` bash
+```bash
 cd Backend
 npm install
 ```
 
-Create the `.env` file and add your environment variables.
+Create the `.env` file and configure your environment variables.
 
 ### 3. Start the Backend
 
-``` bash
+```bash
 npm run dev
 ```
 
-Or, if your project uses the start script:
+Or:
 
-``` bash
+```bash
 npm start
 ```
 
@@ -461,128 +458,150 @@ npm start
 
 Open another terminal:
 
-``` bash
+```bash
 cd Frontend
 npm install
 ```
 
 ### 5. Start the Frontend
 
-``` bash
+```bash
 npm run dev
 ```
 
 The Vite development server will normally run at:
 
-``` text
+```text
 http://localhost:5173
 ```
 
-------------------------------------------------------------------------
+---
 
 ## 🧪 API Testing
 
-Backend APIs can be tested using **Postman**.
+The backend APIs can be tested using **Postman**.
 
-The project contains API modules for:
+### Authentication APIs
 
-### Authentication
+- Register
+- Login
+- Logout
+- Get current authenticated user
 
--   Register
--   Login
--   Logout
--   Get current authenticated user
+### Interview & AI APIs
 
-### Interview & AI
+- Upload resume
+- Generate AI interview analysis
+- Generate interview questions
+- Analyze resume/job requirements
+- Detect skill gaps
+- Retrieve report by ID
+- Retrieve reports
+- Generate ATS-optimized resume PDF
 
--   Generate interview report
--   Upload resume
--   Retrieve report by ID
--   Retrieve reports
--   Generate resume PDF
+> Check `Backend/src/routes/` and the corresponding controllers for the exact API endpoints and request formats used by the application.
 
-> Check `Backend/src/routes/` and the corresponding controllers for the
-> exact routes and request formats used by the application.
-
-------------------------------------------------------------------------
+---
 
 ## 🔒 Security
 
-The project implements several security mechanisms:
+The application implements several security mechanisms:
 
--   JWT authentication
--   Protected backend routes
--   Authentication middleware
--   JWT token blacklisting
--   HTTP-only authentication cookies
--   Environment variables for secrets
--   File upload middleware
--   Request validation using Zod
+- JWT authentication
+- Protected backend routes
+- Authentication middleware
+- JWT token blacklisting
+- HTTP-only authentication cookies
+- Environment variables for secrets
+- File upload middleware
+- Request validation with Zod
 
-------------------------------------------------------------------------
+---
 
-## 🧠 What I Learned
+## 🧠 Key Concepts Demonstrated
 
-Through this project, I worked with:
+This project demonstrates practical experience with:
 
--   Full-stack application architecture
--   REST API development
--   JWT authentication
--   Token blacklisting
--   MongoDB and Mongoose
--   React Context API
--   Custom React hooks
--   Protected routes
--   File uploads with Multer
--   AI API integration
--   Structured AI responses
--   Resume parsing
--   Skill extraction
--   Skill-gap analysis
--   ATS-focused resume generation
--   Puppeteer PDF generation
--   Frontend/backend integration
--   Real-world project folder organization
+- Full-stack application architecture
+- REST API development
+- React component architecture
+- Feature-based frontend organization
+- React Context API
+- Custom React hooks
+- JWT authentication
+- JWT token blacklisting
+- Protected routes
+- MongoDB and Mongoose
+- File uploads with Multer
+- Request validation with Zod
+- Google Gemini API integration
+- Resume parsing
+- Skill extraction
+- Job description analysis
+- AI-powered skill-gap detection
+- AI-generated interview questions
+- ATS-optimized resume generation
+- Puppeteer PDF generation
+- Frontend/backend integration
+- Real-world project structuring
 
-------------------------------------------------------------------------
+---
 
 ## 🚧 Future Improvements
 
-Possible improvements include:
+- Refresh-token rotation
+- Rate limiting for AI endpoints
+- More detailed interview scoring
+- Support for additional resume formats
+- Interview history and analytics
+- Role-specific interview question generation
+- Improved ATS scoring
+- Multiple resume templates
+- Automated unit and integration tests
+- Docker support
+- Production deployment
+- CI/CD with GitHub Actions
 
--   Add refresh-token rotation
--   Add rate limiting for AI endpoints
--   Add more detailed interview scoring
--   Support additional resume formats
--   Add interview history and analytics
--   Add role-specific interview questions
--   Improve ATS scoring
--   Add resume templates
--   Add automated test coverage
--   Add Docker support
--   Deploy frontend and backend to production
--   Add CI/CD using GitHub Actions
-
-------------------------------------------------------------------------
+---
 
 ## 📌 Project Highlights
 
-> **Full-Stack Web Application**\
-> React.js + Node.js + Express.js + MongoDB
+### Full-Stack Application
+**React.js + Node.js + Express.js + MongoDB**
 
-> **Secure Authentication**\
-> JWT + Protected Routes + Token Blacklisting
+### Secure Authentication
+**JWT + Protected Routes + Token Blacklisting**
 
-> **AI Integration**\
-> Google Gemini API for resume and interview analysis
+### Generative AI
+**Google Gemini API for resume, job, skill, and interview analysis**
 
-> **Resume Intelligence**\
-> Resume Parsing + Skill Extraction + Skill Gap Detection
+### Career Intelligence
+**Resume Parsing + Skill Extraction + Job Description Analysis + Skill Gap Detection**
 
-> **Resume Generation**\
-> ATS-Optimized Resume + Puppeteer PDF Generation
+### Interview Preparation
+**AI-Generated Personalized Interview Questions + Interview Reports**
 
-------------------------------------------------------------------------
+### Resume Generation
+**ATS-Optimized Resume + Puppeteer PDF Generation**
+
+---
+
+## 🎥 Project Walkthrough
+
+This project was developed as a complete full-stack + Gen AI application walkthrough covering:
+
+- Backend and authentication setup
+- MongoDB Atlas integration
+- JWT authentication and token blacklisting
+- React frontend architecture
+- Protected routes and authentication state
+- Gemini AI integration
+- Resume parsing and AI analysis
+- Interview report generation
+- Resume PDF generation with Puppeteer
+- Frontend integration and report management
+
+---
 
 ## 👨‍💻 Author
 
@@ -592,9 +611,8 @@ GitHub: `https://github.com/YOUR_USERNAME`
 
 LinkedIn: `https://www.linkedin.com/in/YOUR_USERNAME/`
 
-------------------------------------------------------------------------
+---
 
 ## ⭐ Support
 
-If you found this project useful, consider giving the repository a ⭐ on
-GitHub.
+If you found this project useful, consider giving the repository a ⭐ on GitHub.
