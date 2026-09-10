@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react'
 import "../style/home.scss"
 import { useInterview } from '../hooks/useInterview.js'
-import { useNavigate } from 'react-router' 
+import { useAuth } from '../../auth/hooks/useAuth.js'
+import { useNavigate } from 'react-router'
 
 const Home = () => {
 
     const { loading, generateReport, reports } = useInterview()
+    const { handleLogout } = useAuth()
 
     const [jobDescription, setJobDescription] = useState("")
     const [selfDescription, setSelfDescription] = useState("")
@@ -14,6 +16,11 @@ const Home = () => {
     const resumeInputRef = useRef()
 
     const navigate = useNavigate()
+
+    const handleLogoutClick = async () => {
+        await handleLogout()
+        navigate('/login')
+    }
 
     const handleResumeChange = (e) => {
         const file = e.target.files[0]
@@ -59,16 +66,50 @@ const Home = () => {
 
             {/* Page Header */}
             <header className='page-header'>
-                <h1>
-                    Create Your Custom{' '}
-                    <span className='highlight'>Interview Plan</span>
-                </h1>
 
-                <p>
-                    Let our AI analyze the job requirements and your unique
-                    profile to build a winning strategy.
-                </p>
+                <div className='header-top'>
+
+                    <div>
+                        <h1>
+                            Create Your Custom{' '}
+                            <span className='highlight'>Interview Plan</span>
+                        </h1>
+
+                        <p>
+                            Let our AI analyze the job requirements and your unique
+                            profile to build a winning strategy.
+                        </p>
+                    </div>
+
+                    <button
+                        type='button'
+                        className='logout-btn'
+                        onClick={handleLogoutClick}
+                        disabled={loading}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                            <polyline points="16 17 21 12 16 7" />
+                            <line x1="21" y1="12" x2="9" y2="12" />
+                        </svg>
+
+                        Logout
+                    </button>
+
+                </div>
+
             </header>
+
 
             {/* Main Card */}
             <div className='interview-card'>
@@ -127,8 +168,10 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
 
                     </div>
 
+
                     {/* Vertical Divider */}
                     <div className='panel-divider' />
+
 
                     {/* Right Panel - Profile */}
                     <div className='panel panel--right'>
@@ -156,6 +199,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
 
                         </div>
 
+
                         {/* Upload Resume */}
                         <div className='upload-section'>
 
@@ -166,6 +210,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                                     Best Results
                                 </span>
                             </label>
+
 
                             {!resumeFile && (
                                 <label
@@ -212,6 +257,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                                 </label>
                             )}
 
+
                             {/* Selected Resume */}
                             {resumeFile && (
                                 <div className='resume-selected'>
@@ -251,10 +297,12 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
 
                         </div>
 
+
                         {/* OR Divider */}
                         <div className='or-divider'>
                             <span>OR</span>
                         </div>
+
 
                         {/* Quick Self-Description */}
                         <div className='self-description'>
@@ -277,6 +325,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
 
                         </div>
 
+
                         {/* Info Box */}
                         <div className='info-box'>
 
@@ -289,6 +338,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                                     fill="currentColor"
                                 >
                                     <circle cx="12" cy="12" r="10" />
+
                                     <line
                                         x1="12"
                                         y1="8"
@@ -297,6 +347,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                                         stroke="#1a1f27"
                                         strokeWidth="2"
                                     />
+
                                     <line
                                         x1="12"
                                         y1="16"
@@ -319,6 +370,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                     </div>
 
                 </div>
+
 
                 {/* Card Footer */}
                 <div className='interview-card__footer'>
@@ -352,6 +404,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
                 </div>
 
             </div>
+
 
             {/* Recent Reports List */}
             {reports.length > 0 && (
@@ -400,6 +453,7 @@ e.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScri
 
                 </section>
             )}
+
 
             {/* Page Footer */}
             <footer className='page-footer'>

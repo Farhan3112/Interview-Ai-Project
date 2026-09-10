@@ -57,6 +57,9 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
 
 // ── Page Header ──────────────────────────────────────────────────────────────
 .page-header {
+    width: 100%;
+    max-width: 900px;
+
     text-align: center;
 
     h1 {
@@ -76,6 +79,69 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
 
     .highlight {
         color: $accent;
+    }
+}
+
+
+// ── Header + Logout ──────────────────────────────────────────────────────────
+.header-top {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 2rem;
+}
+
+
+// ── Logout Button ────────────────────────────────────────────────────────────
+.logout-btn {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.5rem;
+
+    padding: 0.65rem 1rem;
+
+    background: transparent;
+    border: 1px solid $border-color;
+    border-radius: 0.5rem;
+
+    color: $text-muted;
+
+    font-family: $font-stack;
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s,
+        border-color 0.2s,
+        background-color 0.2s,
+        transform 0.1s;
+
+    &:hover {
+        color: $accent;
+        border-color: $accent;
+        background-color: rgba($accent, 0.08);
+    }
+
+    &:active {
+        transform: scale(0.97);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    svg {
+        flex-shrink: 0;
     }
 }
 
@@ -694,6 +760,7 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     }
 
     .page-header {
+        text-align: center;
 
         h1 {
             font-size: 1.75rem;
@@ -702,6 +769,16 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
         p {
             font-size: 0.85rem;
         }
+    }
+
+    .header-top {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .logout-btn {
+        align-self: flex-end;
     }
 
     .interview-card {
@@ -790,5 +867,9 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
 
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .logout-btn {
+        width: 100%;
     }
 }
