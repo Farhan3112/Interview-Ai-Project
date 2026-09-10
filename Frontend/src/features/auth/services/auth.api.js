@@ -1,65 +1,66 @@
-import axios from 'axios'
+import axios from "axios"
+
 
 const api = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: "http://localhost:3000",
     withCredentials: true
 })
 
-
-// REGISTER
 export async function register({ username, email, password }) {
+
     try {
         const response = await api.post('/api/auth/register', {
-            username,
-            email,
-            password
+            username, email, password
         })
 
         return response.data
-    } catch (error) {
-        console.log('Register error:', error)
-        throw error
+
+    } catch (err) {
+
+        console.log(err)
+
     }
+
 }
 
-
-// LOGIN
 export async function login({ email, password }) {
+
     try {
-        const response = await api.post('/api/auth/login', {
-            email,
-            password
+
+        const response = await api.post("/api/auth/login", {
+            email, password
         })
 
         return response.data
-    } catch (error) {
-        console.log('Login error:', error)
-        throw error
+
+    } catch (err) {
+        console.log(err)
     }
+
 }
 
-
-// LOGOUT
 export async function logout() {
     try {
-        const response = await api.get('/api/auth/logout')
+
+        const response = await api.get("/api/auth/logout")
 
         return response.data
-    } catch (error) {
-        console.log('Logout error:', error)
-        throw error
+
+    } catch (err) {
+
     }
 }
 
-
-// GET CURRENT USER
 export async function getMe() {
+
     try {
-        const response = await api.get('/api/auth/get-me')
+
+        const response = await api.get("/api/auth/get-me")
 
         return response.data
-    } catch (error) {
-        console.log('Get me error:', error)
-        throw error
+
+    } catch (err) {
+        console.log(err)
     }
+
 }
