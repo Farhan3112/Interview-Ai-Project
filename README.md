@@ -605,11 +605,11 @@ This project was developed as a complete full-stack + Gen AI application walkthr
 
 ## 👨‍💻 Author
 
-**Your Name**
+**Farhan Shamshad**
 
-GitHub: `https://github.com/YOUR_USERNAME`
+GitHub: `https://github.com/Farhan3112`
 
-LinkedIn: `https://www.linkedin.com/in/YOUR_USERNAME/`
+LinkedIn: `https://www.linkedin.com/in/farhan3112/`
 
 ---
 
