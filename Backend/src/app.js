@@ -11,6 +11,14 @@ app.use(cors({
     credentials: true
 }))
 
+// Dummy / Health Check API
+app.get('/api', (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: 'Interview AI Backend is running 🚀'
+    })
+})
+
 /**
  * require all the routes here
  */
