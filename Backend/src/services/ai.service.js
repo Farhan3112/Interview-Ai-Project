@@ -637,18 +637,27 @@ Return ONLY valid JSON matching the provided response schema.
 // ─────────────────────────────────────────────────────────────────────────────
 
 async function generatePdfFromHtml(htmlContent) {
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+        headless: true
+    })
 
     try {
         const page = await browser.newPage()
 
+        console.log("📄 Loading resume HTML...")
+
         await page.setContent(htmlContent, {
-            waitUntil: "networkidle0"
+            waitUntil: "domcontentloaded",
+            timeout: 60000
         })
+
+        console.log("✅ Resume HTML loaded")
 
         await page.emulateMediaType("print")
 
-        return await page.pdf({
+        console.log("🖨️ Generating PDF...")
+
+        const pdfBuffer = await page.pdf({
             format: "A4",
             printBackground: true,
             preferCSSPageSize: false,
@@ -659,6 +668,17 @@ async function generatePdfFromHtml(htmlContent) {
                 right: "12mm"
             }
         })
+
+        console.log("✅ PDF generated successfully")
+
+        return pdfBuffer
+
+    } catch (error) {
+
+        console.error("❌ PDF generation failed:")
+        console.error(error)
+
+        throw error
 
     } finally {
         await browser.close()
