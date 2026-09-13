@@ -61,6 +61,30 @@ It combines **Full Stack Development with Generative AI** to demonstrate how mod
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Resume & Job Description Analysis
+
+![Resume & Job Description Analysis](./Frontend/screenshots/home1.PNG)
+
+### 💻 AI-Generated Technical Questions
+
+![Technical Interview Questions](./Frontend/screenshots/technical.PNG)
+
+### 🗣️ AI-Generated Behavioral Questions
+
+![Behavioral Interview Questions](./Frontend/screenshots/behavioral.PNG)
+
+### 📅 Personalized Interview Preparation Roadmap
+
+![Interview Preparation Roadmap](./screenshots/roadmap.PNG)
+
+### 📄 ATS-Optimized Resume
+
+![ATS-Optimized Resume](./screenshots/resume1.PNG)
+
+---
+
 ## 🛠️ Tech Stack
 
 | Category | Technologies |
