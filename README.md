@@ -81,7 +81,7 @@ It combines **Full Stack Development with Generative AI** to demonstrate how mod
 
 ### 📄 ATS-Optimized Resume
 
-![ATS-Optimized Resume](./Frontend/screenshots/resume1.PNG)
+![ATS-Optimized Resume](./Frontend/screenshots/resume.PNG)
 
 ---
 
