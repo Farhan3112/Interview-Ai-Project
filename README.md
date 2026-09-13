@@ -77,11 +77,11 @@ It combines **Full Stack Development with Generative AI** to demonstrate how mod
 
 ### 📅 Personalized Interview Preparation Roadmap
 
-![Interview Preparation Roadmap](./screenshots/roadmap.PNG)
+![Interview Preparation Roadmap](./Frontend/screenshots/roadmap.PNG)
 
 ### 📄 ATS-Optimized Resume
 
-![ATS-Optimized Resume](./screenshots/resume1.PNG)
+![ATS-Optimized Resume](./Frontend/screenshots/resume1.PNG)
 
 ---
 
